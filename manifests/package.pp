@@ -35,16 +35,18 @@ class jboss::package (
             '7': { $jboss_source = 'http://download.jboss.org/jbossas/7.0/jboss-as-7.0.2.Final/jboss-as-web-7.0.2.Final.zip' }
           }
         }
+        $filename = staging_parse($jboss_source, 'filename')
         $basename = staging_parse($jboss_source, 'basename')
 
-        staging::deploy { $basename:
+        staging::deploy { $filename:
           source => $jboss_source,
           target => $target,
         }
 
         file { "${target}/jboss":
-          ensure => symlink,
-          target => "${target}/${extract}",
+          ensure  => symlink,
+          target  => "${target}/${basename}",
+          require => Staging::Deploy[$filename],
         }
     }
     'package': {
