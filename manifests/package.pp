@@ -36,10 +36,9 @@ class jboss::package (
             '7': { $jboss_source = 'http://download.jboss.org/jbossas/7.0/jboss-as-7.0.2.Final/jboss-as-web-7.0.2.Final.zip' }
           }
         }
-        $filename = inline_template("<% require 'uri' %> <%= File.basename URI.parse(jboss_source).path %>")
-        $extract = inline_template("<% require 'uri' %> <%= File.basename(filename, File.extname(filename) %>")
+        $basename = staging_parse($filename, 'basename')
 
-        staging::deploy { $filename:
+        staging::deploy { $basename:
           source => $jboss_source,
           target => $target,
         }
