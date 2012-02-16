@@ -6,7 +6,7 @@ class jboss::package (
   $package_name = hiera('jboss_package_name', 'jboss'),
   $version      = hiera('jboss_version', 7),
   # settings below only relevant for file deployment
-  $source       = hiera('jboss_source', 'undef'),
+  $source       = hiera('jboss_source', undef),
   $target       = hiera('jboss_target', '/opt')
 ) {
 
@@ -30,7 +30,7 @@ class jboss::package (
         $jboss_source = $source
         } else {
           case $version {
-            '5': { $jboss_source = 'http://sourceforge.net/projects/jboss/files/JBoss/JBoss-5.1.0.GA/jboss-5.1.0.GA.zip/download' }
+            '5': { $jboss_source = 'http://sourceforge.net/projects/jboss/files/JBoss/JBoss-5.1.0.GA/jboss-5.1.0.GA.zip' }
             '6': { $jboss_source = 'http://download.jboss.org/jbossas/6.1/jboss-as-distribution-6.1.0.Final.zip' }
             '7': { $jboss_source = 'http://download.jboss.org/jbossas/7.0/jboss-as-7.0.2.Final/jboss-as-web-7.0.2.Final.zip' }
           }
