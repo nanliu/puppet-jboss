@@ -24,7 +24,7 @@ JBOSS_USER=${JBOSS_USER:-"jboss"}
 JAVAPTH=${JAVAPTH:-"/usr/bin"}
 
 #configuration to use, usually one of 'minimal', 'default', 'all'
-JBOSS_CONF=${JBOSS_CONF:-"default"}
+JBOSS_CONF=${JBOSS_CONF:-<%=instance_name%>}
 
 #specify default jboss_host
 JBOSS_HOST=${JBOSS_HOST:-"<%=ipaddress%>"}
