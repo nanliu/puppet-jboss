@@ -39,11 +39,8 @@ class jboss::package (
         $filename = inline_template("<% require 'uri' %> <%= File.basename URI.parse(jboss_source).path %>")
         $extract = inline_template("<% require 'uri' %> <%= File.basename(filename, File.extname(filename) %>")
 
-        staging::file { $filename:
+        staging::deploy { $filename:
           source => $jboss_source,
-        }
-
-        staging::extract { $filename:
           target => $target,
         }
 
