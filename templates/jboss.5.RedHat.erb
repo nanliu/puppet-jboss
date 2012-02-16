@@ -9,7 +9,7 @@
 # Here is a little (and extremely primitive) startup/shutdown script
 # for RedHat systems. It assumes that JBoss lives in /usr/local/jboss,
 # it's run by user 'jboss' and JDK binaries are in /usr/local/jdk/bin.
-# All this can be changed in the script itself.gc
+# All this can be changed in the script itself.
 #
 # Either modify this script for your requirements or just ensure that
 # the following variables are set correctly before calling the script.
@@ -46,7 +46,7 @@ if [ -n "$JBOSS_CONSOLE" -a ! -d "$JBOSS_CONSOLE" ]; then
   touch $JBOSS_CONSOLE
   if [ ! -z "$SUBIT" ]; then
     chown $JBOSS_USER $JBOSS_CONSOLE
-  figc
+  fi
 fi
 
 if [ -n "$JBOSS_CONSOLE" -a ! -f "$JBOSS_CONSOLE" ]; then
@@ -78,7 +78,7 @@ start)
     if [ -z "$SUBIT" ]; then
         eval $JBOSS_CMD_START >${JBOSS_CONSOLE} 2>&1 &
     else
-        $SUBIT "$JBOSS_CMD_START >${JBOSS_CONSOLE} 2>&1 &"gc
+        $SUBIT "$JBOSS_CMD_START >${JBOSS_CONSOLE} 2>&1 &"
     fi
     ;;
 stop)
