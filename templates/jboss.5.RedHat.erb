@@ -27,7 +27,7 @@ JAVAPTH=${JAVAPTH:-"/usr/bin"}
 JBOSS_CONF=${JBOSS_CONF:-"default"}
 
 #if JBOSS_HOST specified, use -b to bind jboss services to that address
-JBOSS_BIND_ADDR=${JBOSS_HOST:+"-b $JBOSS_HOST"}
+JBOSS_BIND_ADDR=${JBOSS_HOST:+"-b <%= ipaddress %>"}
 
 #define the classpath for the shutdown class
 JBOSSCP=${JBOSSCP:-"$JBOSS_HOME/bin/shutdown.jar:$JBOSS_HOME/client/jnet.jar"}
