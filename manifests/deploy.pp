@@ -7,10 +7,10 @@ define jboss::deploy (
   $conf_dir = "${target}/server/${instance_name}"
   case $name {
     /.ear$/: {
-      $target = "${conf_dir}/deploy"
+      $target_dir = "${conf_dir}/deploy"
     }
     /.war$/: {
-      $target = "${conf_dir}/lib"
+      $target_dir = "${conf_dir}/lib"
     }
     default: {
       fail("jboss::deploy: unsupported file format ${name}")
@@ -19,7 +19,7 @@ define jboss::deploy (
 
   staging::file { $name:
     source => $source,
-    target => $target,
+    target => $target_dir,
     notify => Class['jboss::service'],
   }
 

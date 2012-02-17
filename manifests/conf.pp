@@ -1,6 +1,6 @@
 define jboss::conf (
-  $source  = undef,
-  $content = undef,
+  $source        = undef,
+  $content       = undef,
   $target        = '/usr/local/jboss',
   $instance_name = 'default'
 ){
@@ -8,8 +8,11 @@ define jboss::conf (
   $conf_dir = "${target}/server/${instance_name}"
 
   file { $name:
-    source => $source,
-    target => $target,
-    notice => Class['jboss::service'],
+    owner   => 'jboss',
+    group   => 'jboss',
+    mode    => '0644',
+    source  => $source,
+    content => $content,
+    notice  => Class['jboss::service'],
   }
 }
