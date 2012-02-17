@@ -7,7 +7,7 @@ define jboss::conf (
 
   $conf_dir = "${target}/server/${instance_name}"
 
-  file { $name:
+  file { "${conf_dir}/${name}":
     owner   => 'jboss',
     group   => 'jboss',
     mode    => '0644',
