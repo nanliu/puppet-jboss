@@ -9,7 +9,7 @@ define jboss::deploy (
     /.ear$/: {
       $target_dir = "${conf_dir}/deploy"
     }
-    /.war$/: {
+    /.jar$/: {
       $target_dir = "${conf_dir}/lib"
     }
     default: {
