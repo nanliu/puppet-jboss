@@ -13,6 +13,7 @@ define jboss::conf (
     mode    => '0644',
     source  => $source,
     content => $content,
-    notice  => Class['jboss::service'],
+    notify  => Class['jboss::service'],
   }
+
 }
