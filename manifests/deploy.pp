@@ -1,7 +1,7 @@
 define jboss::deploy (
   $source,
-  $jboss_target        = '/usr/local/jboss',
-  $jboss_instance_name = 'default'
+  $target        = '/usr/local/jboss',
+  $instance_name = 'default'
 ){
 
   $conf_dir = "${target}/server/${instance_name}"
@@ -12,11 +12,15 @@ define jboss::deploy (
     /.war$/: {
       $target = "${conf_dir}/lib"
     }
+    default: {
+      fail("jboss::deploy: unsupported file format ${name}")
+    }
   }
 
   staging::file { $name:
     source => $source,
     target => $target,
-    notice => Class['jboss::service'],
+    notify => Class['jboss::service'],
   }
+
 }

@@ -36,6 +36,7 @@ class jboss::package (
           # Versions below have not been tested:
           '6': { $jboss_source = 'http://download.jboss.org/jbossas/6.1/jboss-as-distribution-6.1.0.Final.zip' }
           '7': { $jboss_source = 'http://download.jboss.org/jbossas/7.0/jboss-as-7.0.2.Final/jboss-as-web-7.0.2.Final.zip' }
+          default: { fail("jboss::package: unknown version ${version} and no source provided") }
         }
       }
 
@@ -70,10 +71,15 @@ class jboss::package (
         require => Staging::Deploy[$filename],
       }
     }
+
     'package': {
       package { $package_name:
         ensure => $version,
       }
+    }
+
+    default: {
+      fail("jboss::package: unsupported deployment method ${deployment}")
     }
   }
 
