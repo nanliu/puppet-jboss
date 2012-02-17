@@ -19,7 +19,7 @@ define jboss::deploy (
 
   staging::file { $name:
     source => $source,
-    target => $target_dir,
+    target => "${target_dir}/${name}",
     notify => Class['jboss::service'],
   }
 
