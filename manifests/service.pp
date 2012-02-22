@@ -1,3 +1,13 @@
+# Class: jboss::service
+#
+# Parameters:
+#
+# Actions:
+#
+# Requires:
+#
+# Usage:
+#
 class jboss::service {
 
   service { 'jboss':

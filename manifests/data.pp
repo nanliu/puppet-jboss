@@ -1,3 +1,13 @@
+# Class: jboss::data
+#
+# Parameters:
+#
+# Actions:
+#
+# Requires:
+#
+# Usage:
+#
 class jboss::data {
   $jboss_version       = 5
   $jboss_deployment    = 'file'

@@ -1,10 +1,21 @@
+# Define: jboss::deploy
+#
+# Parameters:
+#
+# Actions:
+#
+# Requires:
+#
+# Usage:
+#
 define jboss::deploy (
   $source,
-  $target        = '/usr/local/jboss',
-  $instance_name = 'default'
+  $target        = hiera('jboss_target', '/usr/local/jboss'),
+  $instance_name = hiera('jboss_instance_name', 'default')
 ){
 
   $conf_dir = "${target}/server/${instance_name}"
+
   case $name {
     /.ear$/: {
       $target_dir = "${conf_dir}/deploy"

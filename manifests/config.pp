@@ -1,10 +1,17 @@
-# class: jboss::config
+# Class: jboss::config
 #
+# Parameters:
+#
+# Actions:
+#
+# Requires:
+#
+# Usage:
 #
 class jboss::config (
   $version       = hiera('jboss_version', 5),
-  $instance_name = hiera('jboss_instance_name', 'default'),
-  $target        = hiera('jboss_target', '/usr/local/jboss'),
+  $instance_name = hiera('jboss_instance_name'),
+  $target        = hiera('jboss_target'),
   $jmx_user      = hiera('jboss_jmx_user', 'admin'),
   $jmx_password  = hiera('jboss_jmx_password', 'changeme')
 ) {

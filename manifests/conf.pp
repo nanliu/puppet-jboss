@@ -1,8 +1,23 @@
+# Define: jboss::conf
+#
+# Parameters:
+#
+#   * source: configuration file source. (use either source or content)
+#   * content: configureation file content. (use either source or conent)
+#   * target: jboss target deployment directory.
+#   * instance_name: jboss instance name.
+#
+# Actions:
+#
+# Requires:
+#
+# Usage:
+#
 define jboss::conf (
   $source        = undef,
   $content       = undef,
-  $target        = '/usr/local/jboss',
-  $instance_name = 'default'
+  $instance_name = hiera('jboss_instance_name'),
+  $target        = hiera('jboss_target')
 ){
 
   $conf_dir = "${target}/server/${instance_name}"

@@ -1,16 +1,23 @@
-# class: jboss::package
+# Class: jboss::package
 #
+# Parameters:
+#
+# Actions:
+#
+# Requires:
+#
+# Usage:
 #
 class jboss::package (
-  $uid          = hiera('jboss_uid', 201),
-  $gid          = hiera('jboss_gid', 201),
-  $shell        = hiera('jboss_shell', '/bin/sh'),
-  $deployment   = hiera('jboss_deployment', 'file'),
-  $package_name = hiera('jboss_package_name', 'jboss'),
-  $version      = hiera('jboss_version', 5),
+  $uid          = hiera('jboss_uid'),
+  $gid          = hiera('jboss_gid'),
+  $shell        = hiera('jboss_shell'),
+  $deployment   = hiera('jboss_deployment'),
+  $package_name = hiera('jboss_package_name'),
+  $version      = hiera('jboss_version'),
   # settings below only relevant for file deployment
   $source       = hiera('jboss_source', undef),
-  $target       = hiera('jboss_target', '/usr/local/jboss')
+  $target       = hiera('jboss_target')
 ) {
 
   group { 'jboss':
