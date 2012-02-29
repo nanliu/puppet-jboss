@@ -16,8 +16,8 @@
 define jboss::conf (
   $source        = undef,
   $content       = undef,
-  $instance_name = hiera('jboss_instance_name'),
-  $target        = hiera('jboss_target')
+  $instance_name = hiera('jboss_instance_name', 'default'),
+  $target        = hiera('jboss_target', '/usr/local/jboss')
 ){
 
   $conf_dir = "${target}/server/${instance_name}"
