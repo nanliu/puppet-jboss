@@ -33,7 +33,6 @@ class jboss::config (
 
   file { "${conf_dir}/conf/props/jmx-console-users.properties":
     content => "${jmx_user}=${jmx_password}",
-    replace => false,
   }
 
 }
