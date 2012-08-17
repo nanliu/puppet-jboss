@@ -9,16 +9,16 @@
 # Usage:
 #
 class jboss::package (
-  $uid          = hiera('jboss_uid'),
-  $gid          = hiera('jboss_gid'),
-  $shell        = hiera('jboss_shell'),
-  $deployment   = hiera('jboss_deployment'),
-  $package_name = hiera('jboss_package_name'),
-  $version      = hiera('jboss_version'),
+  $uid          = $jboss::params::uid,
+  $gid          = $jboss::params::gid,
+  $shell        = $jboss::params::shell,
+  $deployment   = $jboss::params::deployment,
+  $package_name = $jboss::params::package_name,
+  $version      = $jboss::params::version,
   # settings below only relevant for file deployment
-  $source       = hiera('jboss_source', undef),
-  $target       = hiera('jboss_target')
-) {
+  $source       = $jboss_source,
+  $target       = $jboss_target
+) inherits jboss::params {
 
   group { 'jboss':
     ensure => present,

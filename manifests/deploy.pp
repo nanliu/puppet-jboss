@@ -10,11 +10,24 @@
 #
 define jboss::deploy (
   $source,
-  $target        = hiera('jboss_target', '/usr/local/jboss'),
-  $instance_name = hiera('jboss_instance_name', 'default')
+  $target        = undef,
+  $instance_name = undef,
 ){
 
-  $conf_dir = "${target}/server/${instance_name}"
+  include jboss::params
+  if $instance_name {
+    $r_instance_name = $instance_name
+  } else {
+    $r_instance_name = $jboss::params::instance_name
+  }
+
+  if $target {
+    $r_target = $target
+  } else {
+    $r_target = $jboss::params::target
+  }
+
+  $conf_dir = "${r_target}/server/${r_instance_name}"
 
   case $name {
     /.ear$/: {

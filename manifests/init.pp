@@ -9,11 +9,11 @@
 # Usage:
 #
 class jboss (
-  $version      = hiera('jboss_version'),
-  $target       = hiera('jboss_target'),
-  $jmx_user     = hiera('jboss_jmx_user'),
-  $jmx_password = hiera('jboss_jmx_password')
-){
+  $version      = $jboss::params::version,
+  $target       = $jboss::params::target,
+  $jmx_user     = $jboss::params::jmx_user,
+  $jmx_password = $jboss::params::jmx_password
+) inherits jboss::params {
 
   class { 'jboss::package':
     version => $version,
